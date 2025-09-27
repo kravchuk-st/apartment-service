@@ -1,0 +1,11 @@
+.env
+.git
+.vscode
+*.log
+*.tsbuildinfo
+*.tgz
+*.zip
+*.tar.gznpm run
+node_modules
+dist
+docker.env
