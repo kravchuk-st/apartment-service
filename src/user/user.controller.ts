@@ -44,7 +44,7 @@ export class UserController {
   }
 
   @Patch(':id')
-  @Roles(ROLE.ADMIN, ROLE.MANAGER)
+  @Roles(ROLE.ADMIN, ROLE.MANAGER, ROLE.USER)
   update(
     @Param() { id }: ParamsWithId,
     @Body(new ValidationPipe()) updateUserDto: UpdateUserDto,
