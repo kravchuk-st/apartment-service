@@ -45,6 +45,7 @@ export class CreateUserDto {
   @MaxLength(450)
   aboutMe?: string;
 
+  @IsOptional()
   @IsDate()
   @Type(() => Date)
   birthday?: Date;
