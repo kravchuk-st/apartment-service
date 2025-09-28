@@ -24,10 +24,14 @@ export class AuthService {
     return this.usersService.findOneById(id);
   }
 
-  async signIn(email: string, password: string): Promise<AuthTokenType> {
+  async signIn(
+    email: string,
+    password: string,
+  ): Promise<{ tokens: AuthTokenType; user: User }> {
     const user = await this.usersService.validateUser(email, password);
+    const tokens = await this.getTokens(user);
     if (!user) throw new UnauthorizedException();
-    return this.getTokens(user);
+    return { tokens, user };
   }
 
   async signUp(
