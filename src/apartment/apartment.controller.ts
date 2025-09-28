@@ -147,7 +147,7 @@ export class ApartmentController {
   @UseGuards(AuthJWTGuard)
   @Roles(ROLE.ADMIN, ROLE.MANAGER, ROLE.USER)
   @Delete(':id')
-  remove(@Param() { id }: ParamsWithId) {
+  async remove(@Param() { id }: ParamsWithId) {
     return this.apartmentService.remove(id);
   }
 }

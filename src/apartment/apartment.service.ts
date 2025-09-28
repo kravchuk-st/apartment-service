@@ -77,9 +77,12 @@ export class ApartmentService {
     return `This action updates a #${id} apartment`;
   }
 
-  remove(id: string) {
+  async remove(id: string) {
     try {
-      const apartment = this.apartmentModel.findByIdAndDelete(id);
+      const apartment = await this.apartmentModel.findByIdAndDelete(id);
+      if (!apartment) {
+        throw new NotFoundException(`Apartment with ID ${id} not found`);
+      }
       return true;
     } catch (error) {
       throw new ForbiddenException('Apartment not found: ' + error?.message);
